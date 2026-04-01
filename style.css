@@ -1,5 +1,7 @@
 /* ==============================
    THE OLDEST ENGINE — STYLES
+   Navy + Copper redesign to match
+   The Compass Institute design system
    ============================== */
 
 /* --- Reset & Base --- */
@@ -10,16 +12,21 @@
 }
 
 :root {
-  --bg: #0D0E14;
-  --surface: #1A1C28;
-  --border: #2A2D42;
-  --text-primary: #EAE6DA;
-  --text-secondary: #C0BAB0;
-  --gold: #C9A44A;
-  --spine: #2E3250;
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --font-body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-ui: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --bg:             #0F1729;
+  --surface:        #1A2540;
+  --surface-alt:    #22304A;
+  --border:         rgba(255, 255, 255, 0.10);
+  --border-copper:  rgba(196, 121, 58, 0.30);
+  --text-primary:   #F0EDE6;
+  --text-secondary: #C8C0B0;
+  --gold:           #C4793A;
+  --gold-light:     #D9956A;
+  --gold-glow:      #E8B07A;
+  --spine:          #2E3F5C;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-ui:      'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
 
 html {
@@ -44,11 +51,26 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(13, 14, 20, 0.95);
+  background: rgba(15, 23, 41, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: var(--grain);
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+.site-header > * { position: relative; z-index: 1; }
 
 .header-inner {
   max-width: 1200px;
@@ -65,7 +87,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-light);
 }
 
 .header-title {
@@ -93,7 +115,7 @@ body {
 
 .toggle-all-btn:hover,
 .toggle-all-btn:focus-visible {
-  color: var(--gold);
+  color: var(--gold-light);
   border-color: var(--gold);
   outline: none;
 }
@@ -103,7 +125,23 @@ body {
   padding-top: 5rem;
   padding-bottom: 3rem;
   text-align: center;
+  position: relative;
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: var(--grain);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.hero > * { position: relative; z-index: 1; }
 
 .hero-inner {
   max-width: 780px;
@@ -114,8 +152,8 @@ body {
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 1rem;
@@ -124,7 +162,7 @@ body {
 .hero-subtitle {
   font-family: var(--font-display);
   font-size: clamp(1rem, 2.5vw, 1.3rem);
-  font-weight: 400;
+  font-weight: 300;
   font-style: italic;
   color: var(--text-secondary);
   margin-bottom: 1.25rem;
@@ -135,7 +173,7 @@ body {
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.06em;
-  color: var(--text-secondary);
+  color: var(--gold-light);
   margin-bottom: 2rem;
 }
 
@@ -161,10 +199,10 @@ body {
   position: sticky;
   top: 49px;
   z-index: 90;
-  background: rgba(13, 14, 20, 0.95);
+  background: rgba(15, 23, 41, 0.97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   padding: 0.75rem 0;
 }
 
@@ -203,7 +241,7 @@ body {
 
 .filter-btn:hover {
   color: var(--text-primary);
-  border-color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .filter-btn.active {
@@ -292,7 +330,7 @@ body {
 .timeline-entry:hover .entry-dot,
 .timeline-entry:focus-visible .entry-dot {
   transform: scale(1.3);
-  box-shadow: 0 0 12px rgba(201, 164, 74, 0.4);
+  box-shadow: 0 0 14px rgba(196, 121, 58, 0.50);
 }
 
 /* Date badge */
@@ -300,7 +338,7 @@ body {
   font-family: var(--font-ui);
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--gold-light);
   letter-spacing: 0.04em;
   margin-bottom: 0.5rem;
 }
@@ -318,8 +356,8 @@ body {
 .timeline-entry:hover .entry-card,
 .timeline-entry:focus-visible .entry-card {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-  border-color: rgba(201, 164, 74, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.40);
+  border-color: var(--border-copper);
 }
 
 .entry-era-tag {
@@ -336,7 +374,7 @@ body {
 .entry-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.35;
   color: var(--text-primary);
   margin-bottom: 0.6rem;
@@ -354,7 +392,7 @@ body {
   font-family: var(--font-ui);
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--gold);
+  color: var(--gold-light);
   display: inline-block;
   transition: opacity 0.2s;
 }
@@ -382,7 +420,7 @@ body {
 .entry-content p {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--text-primary);
   margin-bottom: 1rem;
 }
@@ -393,6 +431,7 @@ body {
 
 .entry-content em {
   font-style: italic;
+  color: var(--text-primary);
 }
 
 .entry-content strong {
@@ -419,7 +458,7 @@ body {
 .closing-title {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   text-align: center;
   margin-bottom: 2rem;
@@ -442,7 +481,23 @@ body {
   padding: 2.5rem 1.5rem;
   text-align: center;
   border-top: 1px solid var(--border);
+  position: relative;
 }
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: var(--grain);
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+.site-footer > * { position: relative; z-index: 1; }
 
 .footer-copyright {
   font-family: var(--font-ui);
